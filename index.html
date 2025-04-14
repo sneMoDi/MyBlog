@@ -82,7 +82,53 @@
                 </div>
             </div>
         </div>
+
+        <div class="bert-demo">
+          <h2 class="demo-title">🔍 BERT in Action: Demo Insights</h2>
+          <p class="demo-description">
+              To better understand BERT’s capabilities, we ran multiple experiments to analyze its pre-trained behavior and how it responds to different sentence pairs using <strong>Next Sentence Prediction (NSP)</strong>.
+          </p>
+      
+          <!-- Demo Results Card Grid -->
+          <div class="demo-grid">
+      
+              <!-- MLM Example -->
+              <div class="demo-card">
+                  <h3>Masked Language Modeling</h3>
+                  <p><strong>Input:</strong> "BERT is a [MASK] model developed by Google."</p>
+                  <p><strong>Top Prediction:</strong> <code>business</code> (47.3%)</p>
+                  <p>BERT uses both left and right context to predict missing words — showcasing its bidirectional power.</p>
+              </div>
+      
+              <!-- NSP Correct -->
+              <div class="demo-card correct">
+                  <h3>NSP: Correct Prediction </h3>
+                  <p><strong>Sentence A:</strong> "Marie Curie was a pioneering physicist."</p>
+                  <p><strong>Sentence B:</strong> "She was the first woman to win a Nobel Prize."</p>
+                  <p><strong>Prediction:</strong> IsNext (100%)</p>
+              </div>
+      
+              <!-- NSP False Positive -->
+              <div class="demo-card error">
+                  <h3>NSP: False Positive </h3>
+                  <p><strong>Sentence A:</strong> "Marie Curie was a pioneering physicist."</p>
+                  <p><strong>Sentence B:</strong> "She also developed mobile X-ray units."</p>
+                  <p><strong>True Label:</strong> NotNext</p>
+                  <p><strong>Prediction:</strong> IsNext (100%) → Overconfident!</p>
+              </div>
+      
+              <!-- Post Fine-Tuning -->
+              <div class="demo-card tuned">
+                  <h3>Fine-tuned NSP Model </h3>
+                  <p>We trained BERT using a subset of the SNLI dataset to better distinguish sentence continuity.</p>
+                  <p>After fine-tuning, it correctly predicted the hard negative as <strong>NotNext</strong>.</p>
+              </div>
+          </div>
+      </div>
+      
     </section>
+
+
     
 
     <section id="private-investigator" class="private-investigator-section">
@@ -194,6 +240,77 @@
     
       </div>
     </div>
+    </section>
+
+    <section id="diagrammer" class="diagrammer-section">
+      <div class="container">
+        <h2 class="section-title">How BERT Works</h2>
+        <p class="diagram-intro">
+          The diagram below breaks down BERT's architecture and training pipeline into simple stages.
+          This flow shows how BERT transforms raw text into smart representations, eventually powering downstream NLP tasks.
+        </p>
+    
+        <!-- Step-by-step Breakdown -->
+        <div class="diagram-steps">
+          <div class="diagram-card">
+            <h3>Step 1: Unlabeled Text Corpus</h3>
+            <p><strong>Input:</strong> BooksCorpus + Wikipedia</p>
+            <p>Used to learn general language structure and context patterns.</p>
+          </div>
+    
+          <div class="diagram-card">
+            <h3>Step 2: Pre-training Tasks</h3>
+            <ul>
+              <li><strong>MLM:</strong> Predict masked words from context.</li>
+              <li><strong>NSP:</strong> Predict whether sentence B follows sentence A.</li>
+            </ul>
+          </div>
+    
+          <div class="diagram-card">
+            <h3>Step 3: Bidirectional Transformer Encoder</h3>
+            <p>Processes text in both directions — left and right — for deep understanding.</p>
+          </div>
+    
+          <div class="diagram-card">
+            <h3>Step 4: Pre-trained BERT Model</h3>
+            <p>The result is a versatile model with rich linguistic knowledge, ready for fine-tuning.</p>
+          </div>
+    
+          <div class="diagram-card">
+            <h3>Step 5: Fine-Tuning on Tasks</h3>
+            <ul>
+              <li><strong>QA:</strong> Answer span extraction (e.g., SQuAD)</li>
+              <li><strong>Sentiment:</strong> Binary classification (e.g., SST-2)</li>
+              <li><strong>NLI:</strong> Sentence-level inference (e.g., MNLI)</li>
+            </ul>
+          </div>
+    
+          <div class="diagram-card">
+            <h3>Step 6: Output Formats</h3>
+            <p>Depending on task: answer span, class label, or logical relation.</p>
+          </div>
+        </div>
+    
+        <!-- Visual: Architecture Diagram -->
+        <div class="diagram-image">
+          <img src="images/bert_flowchart.jpeg" alt="BERT architecture flowchart">
+          <p class="caption">Figure: Simplified training and fine-tuning pipeline of BERT.</p>
+        </div>
+      </div>
+
+      <div class="diagram-image">
+        <img src="images/BERT.png" alt="BERT architecture">
+        <p class="caption">Figure 1: Overall pre-training and fine-tuning procedures for BERT. 
+        </p>
+        </div>
+    </div>
+
+    <div class="diagram-image">
+      <img src="images/fig2.png" alt="BERT WORKING">
+      <p class="caption">Figure 2: BERT input representation. The input embeddings are the sum of the token embeddings, the segmenta- tion embeddings and the position embeddings.</p>
+    </div>
+  </div>
+
     </section>
   
 
